@@ -73,7 +73,7 @@ namespace AuthenticationApi.Controllers
 
         public IActionResult GetVehicle([FromRoute] int id)
         {
-            var vehicles = _appDbContext.Vehicles?.FirstOrDefault(x => x.id == id);
+            var vehicles = _appDbContext.Vehicles?.FirstOrDefault(x => x.vehicleId == id);
             return Ok(vehicles);
         }
       

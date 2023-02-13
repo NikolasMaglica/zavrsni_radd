@@ -20,13 +20,13 @@ export class VehicleEditComponent implements OnInit {
 
 
   VehicleDetalils:Vehicle={
-    id:'',
+    vehicleId:'',
     manufacturer:'',
     model:'',
- productionyear:0,
- kilometerstraveled:0,
- vehicle_typeid:'',
- clientid:''
+ productionYear:0,
+ kilometersTraveled:0,
+ vehicle_typeFK:'',
+ clientFK:''
   }
   constructor(private snackBar: MatSnackBar, private authenticationService:AuthenticationService, private clientType:ClientsService,private vehicleService:VehicleService, private router:Router, private vehicle_type:VehicleTypeService, private route: ActivatedRoute) { }
 
@@ -53,7 +53,7 @@ this.VehicleDetalils=response;
     this.authenticationService.logout();
   }
   updateVehicle(id:string){
-    this.vehicleService.updateVehicle(this.VehicleDetalils.id,this.VehicleDetalils).subscribe(
+    this.vehicleService.updateVehicle(this.VehicleDetalils.vehicleId,this.VehicleDetalils).subscribe(
       (result) => {     
           this.snackBar.open('Uspješno ste izmijenili podatke', 'Zatvori');
           this.router.navigate(['vehiclelist']);

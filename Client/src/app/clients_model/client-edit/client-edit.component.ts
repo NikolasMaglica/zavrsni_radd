@@ -13,11 +13,11 @@ import { ClientsService } from 'src/app/services/clients.service';
 })
 export class ClientEditComponent implements OnInit {
   addClientRequest: Client={
-    id:'',
-    firstlastname:'',
+    clientId:'',
+    firstLastName:'',
     email:'',
     adress:'',
-    phonenumber:0
+    phoneNumber:0
   }
  
   constructor(private snackBar: MatSnackBar, private authenticationService:AuthenticationService, private clientType:ClientsService,private route: ActivatedRoute, private router:Router) { }
@@ -38,7 +38,7 @@ this.addClientRequest=response;
     })
   }
     updateVehicle_Type(id:string){
-      this.clientType.updateClient(this.addClientRequest.id,this.addClientRequest).subscribe(
+      this.clientType.updateClient(this.addClientRequest.clientId,this.addClientRequest).subscribe(
         (result) => {     
             this.snackBar.open('Uspješno ste izmijenili podatke', 'Zatvori');
             this.router.navigate(['clientlist']);

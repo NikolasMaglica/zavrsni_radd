@@ -19,8 +19,8 @@ userList:any=[];
 
   vehicles:any;
   addVehicle_TypeRequest: Vehicle_Type={
-    id:'',
-    vehicle_typename:'',
+    vehicle_typeId:'',
+    vehicle_typeName:'',
   }
  
    
@@ -39,8 +39,8 @@ this.vehicleType.getAllVehicle_Types().subscribe({
 });
   }
   delete(item:any) {
-    if(confirm(`Želite li izbirsati vrstu vozila pod rednim brojem ${item.id} ?`)) {
-      this.vehicleType.deleteVehicle_Type(item.id) .subscribe(
+    if(confirm(`Želite li izbirsati vrstu vozila pod rednim brojem ${item.vehicle_typeId} ?`)) {
+      this.vehicleType.deleteVehicle_Type(item.vehicle_typeId) .subscribe(
         (result) => {     
           this.vehicle_Type$=this.vehicleType.getAllVehicle_Types();
             this.snackBar.open('Uspješno ste izbrisali vrstu vozila', 'Zatvori');

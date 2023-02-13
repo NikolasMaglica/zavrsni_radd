@@ -19,10 +19,10 @@ export class UserVehicleAddComponent implements OnInit {
 Vehicle$!:Observable<any[]>;
 
   addUser_VehicleRequest: User_Vehicle={
-    id:'',
-    userid:'',
-    vehicleid:'',
-    description:'',
+    user_vehicleId:'',
+    userFK:'',
+    vehicleFK:'',
+    user_vehicleDescription:'',
 
   }
   constructor(private snackBar: MatSnackBar, private authenticationService:AuthenticationService, private router:Router, private userService:UsersService, private uservehicleService:UserVehicleService, private vehicleService:VehicleService) { }

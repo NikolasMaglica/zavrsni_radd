@@ -76,7 +76,7 @@ namespace AuthenticationApi.Controllers
 
         public IActionResult GetUser_Vehicle([FromRoute] int id)
         {
-            var user_vehicle = _appDbContext.User_Vehicle?.FirstOrDefault(x => x.id == id);
+            var user_vehicle = _appDbContext.User_Vehicle?.FirstOrDefault(x => x.user_vehicleId == id);
             return Ok(user_vehicle);
         }
         [HttpPut]

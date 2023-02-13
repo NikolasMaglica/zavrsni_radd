@@ -77,7 +77,7 @@ namespace AuthenticationApi.Controllers
 
         public IActionResult GetClient([FromRoute] int id)
         {
-            var client = _appDbContext.Clients?.FirstOrDefault(x => x.id == id);
+            var client = _appDbContext.Clients?.FirstOrDefault(x => x.clientId == id);
             return Ok(client);
         }
         [HttpPut]

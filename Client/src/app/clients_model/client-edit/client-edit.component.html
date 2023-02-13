@@ -90,36 +90,36 @@
   
    <form
    form #form="ngForm"
-    (ngSubmit)="updateVehicle_Type(addClientRequest.id)">
+    (ngSubmit)="updateVehicle_Type(addClientRequest.clientId)">
         
    
     <div class="form-group mt-3">
-      <label for="firstlastname">Ime i prezime klijenta</label>
-      <input type="text" class="form-control" id="firstlastname" aria-describedby="emailHelp" placeholder="Unesi ime i prezime klijenta" 
-      required name=firstlastname [(ngModel)]="addClientRequest.firstlastname" #firstlastname="ngModel" pattern="^[a-zA-Z0-9 ]+$" maxlength="30">   
-      <div *ngIf="firstlastname.invalid && (firstlastname.dirty || firstlastname.touched)"
+      <label for="firstLastName">Ime i prezime klijenta</label>
+      <input type="text" class="form-control" id="firstLastName" aria-describedby="emailHelp" placeholder="Unesi ime i prezime klijenta" 
+      required name=firstLastName [(ngModel)]="addClientRequest.firstLastName" #firstLastName="ngModel" pattern="^[a-zA-Z0-9 ]+$" maxlength="30">   
+      <div *ngIf="firstLastName.invalid && (firstLastName.dirty || firstLastName.touched)"
      >
   
-    <div *ngIf="firstlastname.errors?.['required']" class="alert alert-primary" role="alert">
+    <div *ngIf="firstLastName.errors?.['required']" class="alert alert-primary" role="alert">
       Unos imena i prezimena klijenta je <strong>obavezan</strong>.
     </div>
-    <div *ngIf="firstlastname.errors?.['pattern']" class="alert alert-primary" role="alert">
+    <div *ngIf="firstLastName.errors?.['pattern']" class="alert alert-primary" role="alert">
      Možete unijeti samo <strong>slova</strong>.
     </div>
 
     </div> 
   </div> 
     <div class="form-group mt-3">
-      <label for="phonenumber">Broj telefona klijenta</label>
-      <input type="text" class="form-control" id="phonenumber" aria-describedby="emailHelp" placeholder="Unesi broj telefona klijenta" 
-      required name=phonenumber [(ngModel)]="addClientRequest.phonenumber" #phonenumber="ngModel" pattern="[0-9+\s]+" maxlength="20">   
-      <div *ngIf="phonenumber.invalid && (phonenumber.dirty || phonenumber.touched)"
+      <label for="phoneNumber">Broj telefona klijenta</label>
+      <input type="text" class="form-control" id="phoneNumber" aria-describedby="emailHelp" placeholder="Unesi broj telefona klijenta" 
+      required name=phoneNumber [(ngModel)]="addClientRequest.phoneNumber" #phoneNumber="ngModel" pattern="[0-9+\s]+" maxlength="20">   
+      <div *ngIf="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)"
      >
   
-    <div *ngIf="phonenumber.errors?.['required']" class="alert alert-primary" role="alert">
+    <div *ngIf="phoneNumber.errors?.['required']" class="alert alert-primary" role="alert">
       Unos broja telefona klijenta je <strong>obavezan</strong>.
     </div>
-    <div *ngIf="phonenumber.errors?.['pattern']" class="alert alert-primary" role="alert">
+    <div *ngIf="phoneNumber.errors?.['pattern']" class="alert alert-primary" role="alert">
       Možete unijeti samo <strong>brojeve</strong>.
     </div>
     </div> 

@@ -1,7 +1,7 @@
 export interface Client{
-id:string,
-firstlastname:string,
+clientId:string,
+firstLastName:string,
 email:string,
 adress:string,
-phonenumber:number
+phoneNumber:number
 }

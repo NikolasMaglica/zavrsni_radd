@@ -4,6 +4,7 @@ using AuthenticationApi.Db;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AuthenticationApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230213094842_kk")]
+    partial class kk
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,11 +26,11 @@ namespace AuthenticationApi.Migrations
 
             modelBuilder.Entity("AuthenticationApi.Entities.Client", b =>
                 {
-                    b.Property<int>("clientId")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("clientId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
 
                     b.Property<string>("adress")
                         .IsRequired()
@@ -49,7 +51,7 @@ namespace AuthenticationApi.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("int");
 
-                    b.HasKey("clientId");
+                    b.HasKey("id");
 
                     b.ToTable("Clients");
                 });
@@ -245,44 +247,44 @@ namespace AuthenticationApi.Migrations
 
             modelBuilder.Entity("AuthenticationApi.Entities.User_Vehicle", b =>
                 {
-                    b.Property<int>("user_vehicleId")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("user_vehicleId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
 
-                    b.Property<string>("userFK")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("user_vehicleDescription")
+                    b.Property<string>("description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("vehicleFK")
+                    b.Property<string>("userid")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("vehicleid")
                         .HasColumnType("int");
 
-                    b.HasKey("user_vehicleId");
+                    b.HasKey("id");
 
-                    b.HasIndex("userFK");
+                    b.HasIndex("userid");
 
-                    b.HasIndex("vehicleFK");
+                    b.HasIndex("vehicleid");
 
                     b.ToTable("User_Vehicle");
                 });
 
             modelBuilder.Entity("AuthenticationApi.Entities.Vehicle", b =>
                 {
-                    b.Property<int>("vehicleId")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("vehicleId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
 
-                    b.Property<int>("clientFK")
+                    b.Property<int>("clientid")
                         .HasColumnType("int");
 
-                    b.Property<float>("kilometersTraveled")
+                    b.Property<float>("kilometerstraveled")
                         .HasMaxLength(20)
                         .HasColumnType("real");
 
@@ -296,36 +298,36 @@ namespace AuthenticationApi.Migrations
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
-                    b.Property<int>("productionYear")
+                    b.Property<int>("productionyear")
                         .HasMaxLength(20)
                         .HasColumnType("int");
 
-                    b.Property<int>("vehicle_typeFK")
+                    b.Property<int>("vehicle_typeid")
                         .HasColumnType("int");
 
-                    b.HasKey("vehicleId");
+                    b.HasKey("id");
 
-                    b.HasIndex("clientFK");
+                    b.HasIndex("clientid");
 
-                    b.HasIndex("vehicle_typeFK");
+                    b.HasIndex("vehicle_typeid");
 
                     b.ToTable("Vehicles");
                 });
 
             modelBuilder.Entity("AuthenticationApi.Entities.Vehicle_Type", b =>
                 {
-                    b.Property<int>("vehicle_typeId")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("vehicle_typeId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
 
                     b.Property<string>("vehicle_typeName")
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.HasKey("vehicle_typeId");
+                    b.HasKey("id");
 
                     b.ToTable("Vehicle_Types");
                 });
@@ -492,15 +494,12 @@ namespace AuthenticationApi.Migrations
                     b.Property<decimal>("totalPrice")
                         .HasColumnType("decimal(18,3)");
 
-                    b.Property<int>("user_vehicleFK")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("user_vehicleId")
-                        .HasColumnType("int");
-
                     b.Property<string>("userid")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("vehicleid")
+                        .HasColumnType("int");
 
                     b.HasKey("id");
 
@@ -512,9 +511,9 @@ namespace AuthenticationApi.Migrations
 
                     b.HasIndex("serviceid");
 
-                    b.HasIndex("user_vehicleId");
-
                     b.HasIndex("userid");
+
+                    b.HasIndex("vehicleid");
 
                     b.ToTable("Offers");
                 });
@@ -542,13 +541,13 @@ namespace AuthenticationApi.Migrations
                 {
                     b.HasOne("AuthenticationApi.Entities.User", "user")
                         .WithMany("user_vehicle")
-                        .HasForeignKey("userFK")
+                        .HasForeignKey("userid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("AuthenticationApi.Entities.Vehicle", "vehicle")
                         .WithMany("user_vehicle")
-                        .HasForeignKey("vehicleFK")
+                        .HasForeignKey("vehicleid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -561,13 +560,13 @@ namespace AuthenticationApi.Migrations
                 {
                     b.HasOne("AuthenticationApi.Entities.Client", "client")
                         .WithMany("Vehicles")
-                        .HasForeignKey("clientFK")
+                        .HasForeignKey("clientid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("AuthenticationApi.Entities.Vehicle_Type", "vehicle_type")
                         .WithMany("Vehicles")
-                        .HasForeignKey("vehicle_typeFK")
+                        .HasForeignKey("vehicle_typeid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -653,13 +652,15 @@ namespace AuthenticationApi.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("AuthenticationApi.Entities.User_Vehicle", "user_vehicle")
-                        .WithMany("Offers")
-                        .HasForeignKey("user_vehicleId");
-
                     b.HasOne("AuthenticationApi.Entities.User", "User")
                         .WithMany("Offers")
                         .HasForeignKey("userid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AuthenticationApi.Entities.Vehicle", "vehicle")
+                        .WithMany("Offers")
+                        .HasForeignKey("vehicleid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -673,7 +674,7 @@ namespace AuthenticationApi.Migrations
 
                     b.Navigation("service");
 
-                    b.Navigation("user_vehicle");
+                    b.Navigation("vehicle");
                 });
 
             modelBuilder.Entity("AuthenticationApi.Entities.Client", b =>
@@ -712,13 +713,10 @@ namespace AuthenticationApi.Migrations
                     b.Navigation("user_vehicle");
                 });
 
-            modelBuilder.Entity("AuthenticationApi.Entities.User_Vehicle", b =>
-                {
-                    b.Navigation("Offers");
-                });
-
             modelBuilder.Entity("AuthenticationApi.Entities.Vehicle", b =>
                 {
+                    b.Navigation("Offers");
+
                     b.Navigation("user_vehicle");
                 });
 

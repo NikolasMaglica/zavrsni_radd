@@ -1,11 +1,11 @@
 export interface Vehicle{
-id:string;
+vehicleId:string;
  manufacturer:string;
  model:string;
- productionyear: number;
- kilometerstraveled: number;
- vehicle_typeid: string;
- clientid:string;
+ productionYear: number;
+ kilometersTraveled: number;
+ vehicle_typeFK: string;
+ clientFK:string;
 
 }
 

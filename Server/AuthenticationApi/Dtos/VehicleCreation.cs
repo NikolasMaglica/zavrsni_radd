@@ -9,13 +9,13 @@ namespace AuthenticationApi.Dtos
         [Required]
         public string model { get; set; } = String.Empty;
         [Required]
-        public int productionyear { get; set; }
+        public int productionYear { get; set; }
         [Required]
-        public float kilometerstraveled { get; set; }
+        public float kilometersTraveled { get; set; }
         [Required]
-        public int vehicle_typeid { get; set; }
+        public int vehicle_typeFK { get; set; }
         [Required]
-        public int clientid { get; set; }
+        public int clientFK { get; set; }
 
     }
 }

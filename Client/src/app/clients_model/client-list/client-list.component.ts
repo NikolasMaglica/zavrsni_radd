@@ -18,11 +18,11 @@ export class ClientListComponent implements OnInit {
 
   clients:any;
   addVehicle_TypeRequest: Client={
-    id:'',
-    firstlastname:'',
+    clientId:'',
+    firstLastName:'',
     email:'',
     adress:'',
-    phonenumber:0
+    phoneNumber:0
   }
  
    
@@ -41,8 +41,8 @@ this.clientService.getAllClients().subscribe({
 });
   }
   delete(item:any) {
-    if(confirm(`Želite li izbirsati klijenta pod rednim brojem ${item.id} ?`)) {
-      this.clientService.deleteClient(item.id).subscribe(
+    if(confirm(`Želite li izbirsati klijenta pod rednim brojem ${item.clientId} ?`)) {
+      this.clientService.deleteClient(item.clientId).subscribe(
         (result) => {     
           this.Clients$=this.clientService.getAllClients();
             this.snackBar.open('Uspješno ste izbrisali klijenta', 'Zatvori');

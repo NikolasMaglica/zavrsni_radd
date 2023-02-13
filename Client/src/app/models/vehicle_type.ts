@@ -1,5 +1,5 @@
 export interface Vehicle_Type{
-    id:string;
-    vehicle_typename:string;
+    vehicle_typeId:string;
+    vehicle_typeName:string;
    
 }

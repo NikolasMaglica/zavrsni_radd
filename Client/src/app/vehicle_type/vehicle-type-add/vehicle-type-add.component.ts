@@ -15,8 +15,8 @@ export class VehicleTypeAddComponent implements OnInit {
   public showError: boolean = false;
 
   addVehicle_TypeRequest: Vehicle_Type={
-    id:'',
-    vehicle_typename:'',
+    vehicle_typeId:'',
+    vehicle_typeName:'',
   }
 
   constructor(private snackBar: MatSnackBar, private authenticationService: AuthenticationService, private vehicleType: VehicleTypeService, private router: Router) { }

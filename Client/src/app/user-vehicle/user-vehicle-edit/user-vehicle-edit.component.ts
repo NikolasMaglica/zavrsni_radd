@@ -18,10 +18,10 @@ export class UserVehicleEditComponent implements OnInit {
   UserId$!: Observable<any[]>;
   VehicleId$!: Observable<any[]>;
   addUser_VehicleRequest: User_Vehicle={
-    id:'',
-    userid:'',
-    vehicleid:'',
-    description:'',
+    user_vehicleId:'',
+    userFK:'',
+    vehicleFK:'',
+    user_vehicleDescription:'',
 
   }
   constructor(private snackBar: MatSnackBar, private route:ActivatedRoute, private vehicleService:VehicleService, private userService:UsersService, private authenticationService:AuthenticationService, private router:Router, private uservehicleService:UserVehicleService) { }
@@ -45,7 +45,7 @@ this.addUser_VehicleRequest=response;
     })
   }
   updateUser_Vehicle(id:string){
-    this.uservehicleService.updateUser_Vehicle(this.addUser_VehicleRequest.id,this.addUser_VehicleRequest).subscribe(
+    this.uservehicleService.updateUser_Vehicle(this.addUser_VehicleRequest.user_vehicleId,this.addUser_VehicleRequest).subscribe(
       (result) => {     
           this.snackBar.open('Uspješno ste izmijenili podatke', 'Zatvori');
           this.router.navigate(['uservehiclelist']);

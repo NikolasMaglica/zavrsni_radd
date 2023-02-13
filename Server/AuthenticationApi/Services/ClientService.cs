@@ -21,7 +21,7 @@ namespace AuthenticationApi.Services
          
             try
             {
-                var existingClient = _appDbcontext.Clients.FirstOrDefault(x => x.firstlastname == model.firstlastname);
+                var existingClient = _appDbcontext.Clients.FirstOrDefault(x => x.firstLastName == model.firstLastName);
                 if (existingClient != null)
                 {
                     throw new Exception("Ime i prezime je uneseno");
@@ -31,7 +31,7 @@ namespace AuthenticationApi.Services
                 {
                     throw new Exception("Email je unesen");
                 }
-                var existingClient_phonenumber = _appDbcontext.Clients.FirstOrDefault(x => x.phonenumber == model.phonenumber);
+                var existingClient_phonenumber = _appDbcontext.Clients.FirstOrDefault(x => x.phoneNumber == model.phoneNumber);
                 if (existingClient_phonenumber != null)
                 {
                     throw new Exception("Broj telefona je unesen");
@@ -64,7 +64,7 @@ namespace AuthenticationApi.Services
 
 
                 var relatedOfferRecords = _appDbContext.Offers.Where(o => o.clientid == id);
-                var relatedVehicleRecords = _appDbContext.Vehicles.Where(o => o.clientid == id);
+                var relatedVehicleRecords = _appDbContext.Vehicles.Where(o => o.clientFK == id);
 
                 if (relatedVehicleRecords.Any() || relatedOfferRecords.Any())
                 {
@@ -91,7 +91,7 @@ namespace AuthenticationApi.Services
             try
             {
                 return FindAll()
-                                                      .OrderBy(ow => ow.id)
+                                                      .OrderBy(ow => ow.clientId)
                                                       .ToList();
             }
             catch (Exception ex)
@@ -106,21 +106,21 @@ namespace AuthenticationApi.Services
                 var clients = _appDbcontext.Clients?.Find(id);
                 if (clients == null)
                     throw new KeyNotFoundException($"Klijent s {id} nije pronađen u bazi podataka");
-                var existingClients = _appDbcontext.Clients.FirstOrDefault(x => x.firstlastname == model.firstlastname);
-                if (existingClients != null && existingClients.id != id)
+                var existingClients = _appDbcontext.Clients.FirstOrDefault(x => x.firstLastName == model.firstLastName);
+                if (existingClients != null && existingClients.clientId != id)
                     throw new Exception("Ime i prezime već postoji");
                 var existingClients_email = _appDbcontext.Clients.FirstOrDefault(x => x.email == model.email);
-                if (existingClients_email != null && existingClients_email.id != id)
+                if (existingClients_email != null && existingClients_email.clientId != id)
                     throw new Exception("Email već postoji");
-                var existingClients_phonenumber = _appDbcontext.Clients.FirstOrDefault(x => x.phonenumber == model.phonenumber);
-                if (existingClients_phonenumber != null && existingClients_phonenumber.id != id)
+                var existingClients_phonenumber = _appDbcontext.Clients.FirstOrDefault(x => x.phoneNumber == model.phoneNumber);
+                if (existingClients_phonenumber != null && existingClients_phonenumber.clientId != id)
                     throw new Exception("Broj već postoji");
                 var relatedOfferRecords = _appDbcontext.Offers.Where(x => x.clientid == id);
-                var relatedVehicleRecords = _appDbcontext.Vehicles.Where(x => x.clientid == id);
+                var relatedVehicleRecords = _appDbcontext.Vehicles.Where(x => x.clientFK == id);
 
                 if (relatedVehicleRecords.Any() || relatedOfferRecords.Any())
                     throw new Exception("Vrsta vozila je povezana sa drugom tablicom i ne može se ažurirati");
-                clients.firstlastname = model.firstlastname;
+                clients.firstLastName = model.firstLastName;
                 _mapper.Map(model, clients);
                 Update(clients);
                 _appDbcontext.SaveChanges();

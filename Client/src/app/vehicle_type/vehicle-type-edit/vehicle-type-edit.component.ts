@@ -13,8 +13,8 @@ import { VehicleTypeService } from 'src/app/services/vehicle-type.service';
 })
 export class VehicleTypeEditComponent implements OnInit {
   addVehicle_TypeRequest: Vehicle_Type={
-    id:'',
-    vehicle_typename:'',
+    vehicle_typeId:'',
+    vehicle_typeName:'',
   }
   constructor(private snackBar: MatSnackBar,private authenticationService:AuthenticationService,private vehicleType:VehicleTypeService,private route: ActivatedRoute, private router:Router) { }
   ngOnInit(): void {
@@ -34,7 +34,7 @@ this.addVehicle_TypeRequest=response;
     })
   }
     updateVehicle_Type(id:string){
-      this.vehicleType.updateVehicle_Type(this.addVehicle_TypeRequest.id,this.addVehicle_TypeRequest).subscribe(
+      this.vehicleType.updateVehicle_Type(this.addVehicle_TypeRequest.vehicle_typeId,this.addVehicle_TypeRequest).subscribe(
         (result) => {     
             this.snackBar.open('Uspješno ste izmijenili podatke', 'Zatvori');
             this.router.navigate(['vehicle_typelist']);

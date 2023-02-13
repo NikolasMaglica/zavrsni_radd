@@ -90,7 +90,7 @@
     <table class="table" *ngIf="vehicles  && vehicles.length > 0">
         <thead> 
             <tr>
-                <th>ID</th>
+                <th>Rbr.</th>
                 <th>Proizvođač</th>
                 <th>Model</th>
                 <th>Godina proizvodnje</th>
@@ -107,17 +107,17 @@
         <tbody>
             <tr *ngFor="let vehicle of VehicleList$|async">
                 
-                <td>{{vehicle.id}}</td>
+                <td>{{vehicle.vehicleId}}</td>
                 <td>{{vehicle.manufacturer}}</td>
                 <td>{{vehicle.model}}</td>
-                <td>{{vehicle.productionyear}}</td>
-                 <td>{{vehicle.kilometerstraveled}}</td>
-                 <td>{{VehicleTypesMap.get(vehicle.vehicle_typeid)}}</td>
-                 <td>{{clientTypesMap.get(vehicle.clientid)}}</td>
+                <td>{{vehicle.productionYear}}</td>
+                 <td>{{vehicle.kilometersTraveled}}</td>
+                 <td>{{VehicleTypesMap.get(vehicle.vehicle_typeFK)}}</td>
+                 <td>{{clientTypesMap.get(vehicle.clientFK)}}</td>
 
 
                 <td>
-                    <button class="btn btn-outline-primary me-2 mb-1" [routerLink]="['/vehicle','edit', vehicle.id]"
+                    <button class="btn btn-outline-primary me-2 mb-1" [routerLink]="['/vehicle','edit', vehicle.vehicleId]"
                      data-bs-toggle="modal" data-bs-target="#staticBackdrop"
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">

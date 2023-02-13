@@ -14,11 +14,11 @@ import { ClientsService } from 'src/app/services/clients.service';
 export class ClientsAddComponent implements OnInit {
 
   addVehicle_TypeRequest: Client={
-    id:'',
-    firstlastname:'',
+    clientId:'',
+    firstLastName:'',
     email:'',
     adress:'',
-    phonenumber:0
+    phoneNumber:0
   }
   constructor(private snackBar: MatSnackBar, private authenticationService:AuthenticationService,private clientService:ClientsService, private router:Router) { }
 

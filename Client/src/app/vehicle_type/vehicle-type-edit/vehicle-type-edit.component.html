@@ -88,23 +88,23 @@
     <h1 class="mb-3">Uredi podatke o vrsti vozila</h1>
   
    <form 
-   #form="ngForm" (ngSubmit)="updateVehicle_Type(addVehicle_TypeRequest.id)">
+   #form="ngForm" (ngSubmit)="updateVehicle_Type(addVehicle_TypeRequest.vehicle_typeId)">
     <div class="form-group">
       <label for="id" class="form-label">Id</label>
       <input type="text" class="form-control" id="id" aria-label="Disabled input example" disabled  aria-describedby="emailHelp" 
-      name=id [(ngModel)]="addVehicle_TypeRequest.id">
+      name=id [(ngModel)]="addVehicle_TypeRequest.vehicle_typeId">
     </div> 
        <div class="form-group">
-         <label for="vehicle_typename">Naziv vrste vozila</label>
-         <input type="text" class="form-control" id="vehicle_typename" aria-describedby="emailHelp" placeholder="Unesi naziv vrste vozila" 
-         required name=vehicle_typename [(ngModel)]="addVehicle_TypeRequest.vehicle_typename" #vehicle_typename="ngModel" pattern="^[a-zA-Z0-9 ]+$" maxlength="30">   
-         <div *ngIf="vehicle_typename.invalid && (vehicle_typename.dirty || vehicle_typename.touched)"
+         <label for="vehicle_typeName">Naziv vrste vozila</label>
+         <input type="text" class="form-control" id="vehicle_typeName" aria-describedby="emailHelp" placeholder="Unesi naziv vrste vozila" 
+         required name=vehicle_typeName [(ngModel)]="addVehicle_TypeRequest.vehicle_typeName" #vehicle_typeName="ngModel" pattern="^[a-zA-Z0-9 ]+$" maxlength="30">   
+         <div *ngIf="vehicle_typeName.invalid && (vehicle_typeName.dirty || vehicle_typeName.touched)"
         >
      
-       <div *ngIf="vehicle_typename.errors?.['required']" class="alert alert-primary" role="alert">
+       <div *ngIf="vehicle_typeName.errors?.['required']" class="alert alert-primary" role="alert">
          Unos vrste vozila je <strong>obavezan</strong>.
        </div>
-       <div *ngIf="vehicle_typename.errors?.['pattern']" class="alert alert-primary" role="alert">
+       <div *ngIf="vehicle_typeName.errors?.['pattern']" class="alert alert-primary" role="alert">
         Možete unijeti samo <strong>slova i brojeve</strong>.
        </div>
       </div> 

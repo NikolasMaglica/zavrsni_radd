@@ -48,8 +48,8 @@ namespace AuthenticationApi.Services
                 }
 
 
-                var offers = _appDbContext.Offers.Where(o => o.vehicleid == id);
-                var user_vehicle = _appDbContext.User_Vehicle.Where(o => o.vehicleid == id);
+                var offers = _appDbContext.Offers.Where(o => o.user_vehicleFK == id);
+                var user_vehicle = _appDbContext.User_Vehicle.Where(o => o.vehicleFK == id);
 
                 if (offers.Any() || user_vehicle.Any())
                 {
@@ -75,7 +75,7 @@ namespace AuthenticationApi.Services
             try
             {
                 return FindAll()
-                                                      .OrderBy(ow => ow.id);
+                                                      .OrderBy(ow => ow.vehicleId);
            }
             catch (Exception ex)
             {
@@ -92,8 +92,8 @@ namespace AuthenticationApi.Services
                 if (vehicles == null)
                     throw new KeyNotFoundException($"Vozilo s {id} nije pronađena u bazi podataka");
                 
-                var relatedRecords = _appdbcontext.User_Vehicle.Where(x => x.vehicleid == id);
-                var relatedRecord_Offer = _appdbcontext.Offers.Where(x => x.vehicleid == id);
+                var relatedRecords = _appdbcontext.User_Vehicle.Where(x => x.vehicleFK == id);
+                var relatedRecord_Offer = _appdbcontext.Offers.Where(x => x.user_vehicleFK == id);
 
                 if (relatedRecords.Any()||relatedRecord_Offer.Any())
                     throw new Exception("Vrsta vozila je povezana sa drugom tablicom i ne može se ažurirati");

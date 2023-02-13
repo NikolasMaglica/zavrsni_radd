@@ -71,7 +71,7 @@ namespace AuthenticationApi.Controllers
         [Route("{id:int}")]
         public IActionResult GetVehicle_Type([FromRoute] int id)
         {
-            var vehicles = _appDbContext.Vehicle_Types?.FirstOrDefault(x => x.id == id);
+            var vehicles = _appDbContext.Vehicle_Types?.FirstOrDefault(x => x.vehicle_typeId == id);
             return Ok(vehicles);
         }
 

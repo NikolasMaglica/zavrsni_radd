@@ -23,9 +23,9 @@ public class Offer
 
     public virtual Client? client { get; set; }
     [Required]
-    public int vehicleid { get; set; }
+    public int user_vehicleFK { get; set; }
 
-    public virtual Vehicle? vehicle { get; set; }
+    public virtual User_Vehicle? user_vehicle { get; set; }
     [Required]
     public int offer_statusid { get; set; }
 

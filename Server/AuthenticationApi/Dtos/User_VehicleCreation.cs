@@ -5,9 +5,9 @@ namespace AuthenticationApi.Dtos
     public class User_VehicleCreation
     {
         [Required]
-        public string userid { get; set; } = string.Empty;
+        public string userFK { get; set; } = string.Empty;
         [Required]
-        public int vehicleid { get; set; }
-        public string description { get; set;}
+        public int vehicleFK { get; set; }
+        public string user_vehicleDescription { get; set;}
     }
 }

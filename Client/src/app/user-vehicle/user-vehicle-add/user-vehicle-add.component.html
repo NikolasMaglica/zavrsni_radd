@@ -96,29 +96,29 @@
         
       
       <div class="form-group mt-3">
-        <label for="userid">Offer id</label>
-        <input type="text" class="form-control" id="userid" aria-describedby="emailHelp" placeholder="Unesi naziv zaposlenika" 
-        required name=userid [(ngModel)]="addUser_VehicleRequest.userid" *ngIf="addUser_VehicleRequest.userid!=''" #userid="ngModel">   
-        <select class="form-control" name="userid" id="userid" [(ngModel)]="addUser_VehicleRequest.userid" *ngIf="addUser_VehicleRequest.userid==''">
-          <option *ngFor="let type of User$|async" [value]="type.id">{{type.id}}</option>
+        <label for="userFK">Zaposlenik</label>
+        <input type="text" class="form-control" id="userFK" aria-describedby="emailHelp" placeholder="Unesi naziv zaposlenika" 
+        required name=userFK [(ngModel)]="addUser_VehicleRequest.userFK" *ngIf="addUser_VehicleRequest.userFK!=''" #userid="ngModel">   
+        <select class="form-control" name="userFK" id="userFK" [(ngModel)]="addUser_VehicleRequest.userFK" *ngIf="addUser_VehicleRequest.userFK==''">
+          <option *ngFor="let type of User$|async" [value]="type.id">{{type.userName}}</option>
         </select>
 
       </div> 
       <div class="form-group mt-3">
-        <label for="vehicleid">Usluga id</label>
-        <input type="text" class="form-control" id="vehicleid" aria-describedby="emailHelp" placeholder="Unesi vozilo" 
-        required name=vehicleid [(ngModel)]="addUser_VehicleRequest.vehicleid" *ngIf="addUser_VehicleRequest.vehicleid!=''" #vehicleid="ngModel">   
-        <select class="form-control" name="serviceid" id="serviceid" [(ngModel)]="addUser_VehicleRequest.vehicleid" *ngIf="addUser_VehicleRequest.vehicleid==''">
-          <option *ngFor="let type of Vehicle$|async" [value]="type.id">{{type.manufacturer}}</option>
+        <label for="vehicleFK">Vozilo</label>
+        <input type="text" class="form-control" id="vehicleFK" aria-describedby="emailHelp" placeholder="Unesi vozilo" 
+        required name=vehicleFK [(ngModel)]="addUser_VehicleRequest.vehicleFK" *ngIf="addUser_VehicleRequest.vehicleFK!=''" #vehicleFK="ngModel">   
+        <select class="form-control" name="vehicleFK" id="vehicleFK" [(ngModel)]="addUser_VehicleRequest.vehicleFK" *ngIf="addUser_VehicleRequest.vehicleFK==''">
+          <option *ngFor="let type of Vehicle$|async" [value]="type.vehicleId">{{type.manufacturer}}</option>
         </select>
 
       
       </div> 
 
       <div class="form-group mt-3">
-        <label for="description">Opis</label>
-        <input type="text" class="form-control" id="description" aria-describedby="emailHelp" placeholder="Unesi opis" 
-         name=description [(ngModel)]="addUser_VehicleRequest.description" #description="ngModel" maxlength="200">   
+        <label for="user_vehicleDescription">Opis</label>
+        <input type="text" class="form-control" id="user_vehicleDescription" aria-describedby="emailHelp" placeholder="Unesi opis" 
+         name=user_vehicleDescription [(ngModel)]="addUser_VehicleRequest.user_vehicleDescription" #description="ngModel" maxlength="200">   
       </div>
      
      

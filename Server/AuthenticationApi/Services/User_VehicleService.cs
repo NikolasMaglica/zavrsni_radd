@@ -36,7 +36,7 @@ namespace AuthenticationApi.Services
         {
             try
             {
-                return FindAll().OrderBy(ow => ow.id).ToList();
+                return FindAll().OrderBy(ow => ow.user_vehicleId).ToList();
             }
             catch (Exception ex)
             {
@@ -75,7 +75,7 @@ namespace AuthenticationApi.Services
                 var user_vehicle = _appdbcontext.User_Vehicle?.Find(id);
                 if (user_vehicle == null)
                     throw new KeyNotFoundException($"Vrsta vozila s {id} nije pronađena u bazi podataka");
-                user_vehicle.vehicleid = model.vehicleid;
+                user_vehicle.vehicleFK = model.vehicleFK;
                 _mapper.Map(model, user_vehicle);
                 Update(user_vehicle);
                 _appdbcontext.SaveChanges();

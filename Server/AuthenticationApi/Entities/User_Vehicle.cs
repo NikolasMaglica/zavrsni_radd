@@ -7,12 +7,14 @@ namespace AuthenticationApi.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int id { get; set; }
-        public string userid { get; set; }=String.Empty;
+        public int user_vehicleId { get; set; }
+        public string userFK { get; set; }=String.Empty;
         public User? user { get; set; }
-        public int vehicleid { get; set; }
+        public int vehicleFK { get; set; }
         public Vehicle? vehicle { get; set; }
 
-        public string description { get; set; } = String.Empty;
+        public string user_vehicleDescription { get; set; } = String.Empty;
+        public virtual ICollection<Offer>? Offers { get; set; }
+
     }
 }

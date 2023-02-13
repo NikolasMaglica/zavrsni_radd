@@ -92,29 +92,29 @@
   
    <form
     #form="ngForm"
-    (ngSubmit)=" updateUser_Vehicle(addUser_VehicleRequest.id)">
+    (ngSubmit)=" updateUser_Vehicle(addUser_VehicleRequest.user_vehicleId)">
         
       
       <div class="form-group mt-3">
-        <label for="userid">Offer id</label>
-        <select class="form-control" name="userid" id="userid" [(ngModel)]="addUser_VehicleRequest.userid" *ngIf="addUser_VehicleRequest.userid!=''">
-          <option *ngFor="let type of UserId$|async" [value]="type.id">{{type.id}}</option>
+        <label for="userFK">Zaposlenik</label>
+        <select class="form-control" name="userFK" id="userFK" [(ngModel)]="addUser_VehicleRequest.userFK" *ngIf="addUser_VehicleRequest.userFK!=''">
+          <option *ngFor="let type of UserId$|async" [value]="type.id">{{type.userName}}</option>
         </select>
 
       </div> 
       <div class="form-group mt-3">
-        <label for="vehicleid">Usluga id</label>
-        <select class="form-control" name="serviceid" id="serviceid" [(ngModel)]="addUser_VehicleRequest.vehicleid" *ngIf="addUser_VehicleRequest.vehicleid!=''">
-          <option *ngFor="let type of VehicleId$|async" [value]="type.id">{{type.manufacturer}}</option>
+        <label for="vehicleFK">Vozilo</label>
+        <select class="form-control" name="vehicleFK" id="vehicleFK" [(ngModel)]="addUser_VehicleRequest.vehicleFK" *ngIf="addUser_VehicleRequest.vehicleFK!=''">
+          <option *ngFor="let type of VehicleId$|async" [value]="type.vehicleId">{{type.manufacturer}}</option>
         </select>
 
       
       </div> 
 
       <div class="form-group mt-3">
-        <label for="quantity">Opis</label>
-        <input type="text" class="form-control" id="description" aria-describedby="emailHelp" placeholder="Unesi opis" 
-        required name=description [(ngModel)]="addUser_VehicleRequest.description" #description="ngModel" maxlength="200">   
+        <label for="user_vehicleDescription">Opis</label>
+        <input type="text" class="form-control" id="user_vehicleDescription" aria-describedby="emailHelp" placeholder="Unesi opis" 
+        required name=user_vehicleDescription [(ngModel)]="addUser_VehicleRequest.user_vehicleDescription" #description="ngModel" maxlength="200">   
       </div> 
 
 

@@ -5,10 +5,10 @@ namespace AuthenticationApi.Dtos
     public class User_VehicleUpdate
     {
         [Required]
-        public string userid { get; set; } = String.Empty;
+        public string userFK { get; set; } = String.Empty;
         [Required]
-        public int vehicleid { get; set; }
-        public string description { get; set; } = String.Empty;
+        public int vehicleFK { get; set; }
+        public string user_vehicleDescription { get; set; } = String.Empty;
 
     }
 }

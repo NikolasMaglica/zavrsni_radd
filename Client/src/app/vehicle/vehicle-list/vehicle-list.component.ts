@@ -28,16 +28,15 @@ client:any=[];
   VehicleTypesMap:Map<number, string> = new Map()
   clientTypesMap:Map<number, string> = new Map()
 
-  modalTitle:string = '';
   activateAddEditOfferComponent:boolean=false;
-   VehicleDetalils:Vehicle={
-    id:'',
-    manufacturer:'',
-    model:'',
- productionyear:0,
- kilometerstraveled:0,
- vehicle_typeid:'',
- clientid:''
+  VehicleDetalils:Vehicle={
+  vehicleId:'',
+  manufacturer:'',
+  model:'',
+  productionYear:0,
+  kilometersTraveled:0,
+  vehicle_typeFK:'',
+  clientFK:''
   }
   
 
@@ -59,8 +58,8 @@ this.vehicleService.getAllVehicles().subscribe({
 });
   }
   delete(item:any) {
-    if(confirm(`Želite li izbirsati vozilo pod rednim brojem ${item.id} ?`)) {
-      this.vehicleService.deleteVehicle(item.id).subscribe(
+    if(confirm(`Želite li izbirsati vozilo pod rednim brojem ${item.vehicleId} ?`)) {
+      this.vehicleService.deleteVehicle(item.vehicleId).subscribe(
         (result) => {     
           this.VehicleList$=this.vehicleService.getAllVehicles();
             this.snackBar.open('Uspješno ste izbrisali vozilo', 'Zatvori');
@@ -91,7 +90,7 @@ private handleFailedAuthentication(error: HttpErrorResponse): void {
 
       for(let i = 0; i < data.length; i++)
       {
-        this.VehicleTypesMap.set(this.vehicle_typeList[i].id, this.vehicle_typeList[i].vehicle_typename);
+        this.VehicleTypesMap.set(this.vehicle_typeList[i].vehicle_typeId, this.vehicle_typeList[i].vehicle_typeName);
       }
     })
   }
@@ -101,7 +100,7 @@ private handleFailedAuthentication(error: HttpErrorResponse): void {
 
       for(let i = 0; i < data.length; i++)
       {
-        this.clientTypesMap.set(this.client[i].id, this.client[i].firstlastname);
+        this.clientTypesMap.set(this.client[i].clientId, this.client[i].firstLastName);
       }
     })
   }

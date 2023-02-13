@@ -25,7 +25,7 @@ namespace AuthenticationApi.Services
         {
             try
             {
-                var offers = FindAll().OrderBy(ow => ow.vehicleid).ToList();
+                var offers = FindAll().OrderBy(ow => ow.id).ToList();
 
                 // Dohvati materijale za svaku ponudu
                 foreach (var offer in offers)

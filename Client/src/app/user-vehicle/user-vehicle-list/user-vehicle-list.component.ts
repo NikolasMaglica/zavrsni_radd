@@ -21,10 +21,10 @@ export class UserVehicleListComponent implements OnInit {
 
 
   addUser_VehicleRequest: User_Vehicle={
-    id:'',
-    userid:'',
-    vehicleid:'',
-    description:'',
+    user_vehicleId:'',
+    userFK:'',
+    vehicleFK:'',
+    user_vehicleDescription:'',
 
   }
   user_vehicle:any=[];
@@ -49,8 +49,8 @@ this.uservehicleService.getAllUser_Vehicle().subscribe({
 });
   }
   delete(item:any) {
-    if(confirm(`Želite li izbrisati zaposlenikovo vozila pod rednim brojem ${item.id} ?`)) {
-      this.uservehicleService.deleteUser_Vehicle(item.id).subscribe(
+    if(confirm(`Želite li izbrisati zaposlenikovo vozila pod rednim brojem ${item.user_vehicleId} ?`)) {
+      this.uservehicleService.deleteUser_Vehicle(item.user_vehicleId).subscribe(
         (result) => {     
           this.User_Vehicle$=this.uservehicleService.getAllUser_Vehicle();
             this.snackBar.open('Uspješno ste izbrisali vrstu vozila', 'Zatvori');
@@ -94,7 +94,7 @@ this.uservehicleService.getAllUser_Vehicle().subscribe({
 
       for(let i = 0; i < data.length; i++)
       {
-        this.VehicleTypesMap.set(this.vehicleList[i].id, this.vehicleList[i].manufacturer);
+        this.VehicleTypesMap.set(this.vehicleList[i].vehicleId, this.vehicleList[i].manufacturer);
       }
     })
   }

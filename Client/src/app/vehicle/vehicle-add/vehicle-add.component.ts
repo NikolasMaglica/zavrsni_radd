@@ -21,13 +21,13 @@ export class VehicleAddComponent implements OnInit {
 
   
   addVehicleRequest: Vehicle={
-    id:'',
+    vehicleId:'',
     manufacturer:'',
     model:'',
- productionyear:0,
- kilometerstraveled:0,
- vehicle_typeid:'',
- clientid:''
+ productionYear:0,
+ kilometersTraveled:0,
+ vehicle_typeFK:'',
+ clientFK:''
     
   }
   constructor(private snackBar: MatSnackBar, private authenticationService:AuthenticationService, private vehicleService:VehicleService, private router:Router, private vehicletypeService:VehicleTypeService,private clientType:ClientsService) { }

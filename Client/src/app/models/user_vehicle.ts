@@ -1,8 +1,8 @@
 export interface User_Vehicle{
-    id:string;
-     userid:string;
-     vehicleid:string;
-     description: string;   
+     user_vehicleId:string;
+     userFK:string;
+     vehicleFK:string;
+     user_vehicleDescription: string;   
     }
     
     

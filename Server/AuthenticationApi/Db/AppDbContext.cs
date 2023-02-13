@@ -33,13 +33,13 @@ public class AppDbContext : IdentityDbContext<User>
         {
             e.HasMany(p => p.Vehicles)
             .WithOne(p => p.vehicle_type)
-            .HasForeignKey(p => p.vehicle_typeid);
+            .HasForeignKey(p => p.vehicle_typeFK);
         });
         builder.Entity<Client>(e =>
         {
             e.HasMany(p => p.Vehicles)
             .WithOne(p => p.client)
-            .HasForeignKey(p => p.clientid);
+            .HasForeignKey(p => p.clientFK);
         });
         builder.Entity<Client>(e =>
         {
@@ -79,15 +79,15 @@ public class AppDbContext : IdentityDbContext<User>
         });
 
         builder.Entity<User_Vehicle>()
-        .HasKey(bc => bc.id);
+        .HasKey(bc => bc.user_vehicleId);
         builder.Entity<User_Vehicle>()
             .HasOne(bc => bc.user)
             .WithMany(b => b.user_vehicle)
-            .HasForeignKey(bc => bc.userid);
+            .HasForeignKey(bc => bc.userFK);
         builder.Entity<User_Vehicle>()
             .HasOne(bc => bc.vehicle)
             .WithMany(c => c.user_vehicle)
-            .HasForeignKey(bc => bc.vehicleid);
+            .HasForeignKey(bc => bc.vehicleFK);
         builder.Entity<Material>()
        .Property(p => p.price)
        .HasColumnType("decimal(18,3)");

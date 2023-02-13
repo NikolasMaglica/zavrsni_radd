@@ -24,7 +24,7 @@ namespace AuthenticationApi.Services
             try
             {
                 return FindAll()
-                                           .OrderBy(ow => ow.id)
+                                           .OrderBy(ow => ow.vehicle_typeId)
                                            .ToList();
             }
             catch (Exception ex)
@@ -38,7 +38,7 @@ namespace AuthenticationApi.Services
          {
             try
             {
-                var existingVehicleType = _appdbcontext.Vehicle_Types.FirstOrDefault(x => x.vehicle_typename == model.vehicle_typename);
+                var existingVehicleType = _appdbcontext.Vehicle_Types.FirstOrDefault(x => x.vehicle_typeName == model.vehicle_typeName);
                 if (existingVehicleType != null)
                 {
                     throw new Exception("Naziv vrste vozila je unesen");
@@ -71,7 +71,7 @@ namespace AuthenticationApi.Services
                 }
          
                 
-                    var offers = _appDbContext.Vehicles.Where(o => o.vehicle_typeid == id);
+                    var offers = _appDbContext.Vehicles.Where(o => o.vehicle_typeFK == id);
                 if (offers.Any())
                 {
                     throw new InvalidOperationException("Zapis je povezan s drugim zapisom");
@@ -100,13 +100,13 @@ namespace AuthenticationApi.Services
                 var vehicles = _appdbcontext.Vehicle_Types?.Find(id);
                 if (vehicles == null)
                     throw new KeyNotFoundException($"Vrsta vozila s {id} nije pronađena u bazi podataka");
-                var existingVehicleType = _appdbcontext.Vehicle_Types.FirstOrDefault(x => x.vehicle_typename == model.vehicle_typename);
-                if (existingVehicleType != null && existingVehicleType.id != id)
+                var existingVehicleType = _appdbcontext.Vehicle_Types.FirstOrDefault(x => x.vehicle_typeName == model.vehicle_typeName);
+                if (existingVehicleType != null && existingVehicleType.vehicle_typeId != id)
                     throw new Exception("Vrsta vozila s tim imenom već postoji u bazi podataka");
-                var relatedRecords = _appdbcontext.Vehicles.Where(x => x.vehicle_typeid == id);
+                var relatedRecords = _appdbcontext.Vehicles.Where(x => x.vehicle_typeFK == id);
                 if (relatedRecords.Any())
                     throw new Exception("Vrsta vozila je povezana sa drugom tablicom i ne može se ažurirati");
-                vehicles.vehicle_typename = model.vehicle_typename;
+                vehicles.vehicle_typeName = model.vehicle_typeName;
                 _mapper.Map(model, vehicles);
                 Update(vehicles);
                 _appdbcontext.SaveChanges();

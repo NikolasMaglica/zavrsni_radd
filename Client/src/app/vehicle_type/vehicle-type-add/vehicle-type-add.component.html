@@ -96,7 +96,7 @@
       <div class="form-group">
         <label for="vehicle_typename">Naziv vrste vozila</label>
         <input type="text" class="form-control" id="vehicle_typename" aria-describedby="emailHelp" placeholder="Unesi naziv vrste vozila" 
-        required name=vehicle_typename [(ngModel)]="addVehicle_TypeRequest.vehicle_typename" #vehicle_typename="ngModel" pattern="^[a-zA-Z0-9 ]+$" maxlength="30">   
+        required name=vehicle_typename [(ngModel)]="addVehicle_TypeRequest.vehicle_typeName" #vehicle_typename="ngModel" pattern="^[a-zA-Z0-9 ]+$" maxlength="30">   
         <div *ngIf="vehicle_typename.invalid && (vehicle_typename.dirty || vehicle_typename.touched)"
        >
     

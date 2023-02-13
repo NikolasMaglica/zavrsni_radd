@@ -126,50 +126,50 @@
     </div> 
      
       <div class="form-group mt-3">
-        <label for="productionyear">Godina proizvodnje</label>
-        <input type="text" class="form-control" id="productionyear" aria-describedby="emailHelp" placeholder="Unesi godinu proizvodnje" 
-        required name=productionyear [(ngModel)]="addVehicleRequest.productionyear" #productionyear="ngModel" maxlength="6"  pattern="[0-9]*">   
-        <div *ngIf="productionyear.invalid && (productionyear.dirty || productionyear.touched)"
+        <label for="productionYear">Godina proizvodnje</label>
+        <input type="text" class="form-control" id="productionYear" aria-describedby="emailHelp" placeholder="Unesi godinu proizvodnje" 
+        required name=productionYear [(ngModel)]="addVehicleRequest.productionYear" #productionYear="ngModel" maxlength="6"  pattern="[0-9]*">   
+        <div *ngIf="productionYear.invalid && (productionYear.dirty || productionYear.touched)"
        >
     
-      <div *ngIf="productionyear.errors?.['required']" class="alert alert-primary" role="alert">
+      <div *ngIf="productionYear.errors?.['required']" class="alert alert-primary" role="alert">
         Unos godine proizvodnje je <strong>obavezan</strong>.
       </div>
-      <div *ngIf="productionyear.errors?.['pattern']" class="alert alert-primary" role="alert">
+      <div *ngIf="productionYear.errors?.['pattern']" class="alert alert-primary" role="alert">
        Možete unijeti samo <strong>brojeve</strong>.
       </div>
       </div> 
             </div> 
       <div class="form-group mt-3">
-        <label for="kilometerstraveled">Broj prijeđenih kilometara</label>
-        <input type="text" class="form-control" id="kilometerstraveled" aria-describedby="emailHelp" placeholder="Unesi broj prijeđenih kilometara" 
-        required name=kilometerstraveled [(ngModel)]="addVehicleRequest.kilometerstraveled" #kilometerstraveled="ngModel" maxlength="6"  pattern="[0-9]*">   
-        <div *ngIf="kilometerstraveled.invalid && (kilometerstraveled.dirty || kilometerstraveled.touched)"
+        <label for="kilometersTraveled">Broj prijeđenih kilometara</label>
+        <input type="text" class="form-control" id="kilometersTraveled" aria-describedby="emailHelp" placeholder="Unesi broj prijeđenih kilometara" 
+        required name=kilometersTraveled [(ngModel)]="addVehicleRequest.kilometersTraveled" #kilometersTraveled="ngModel" maxlength="6"  pattern="[0-9]*">   
+        <div *ngIf="kilometersTraveled.invalid && (kilometersTraveled.dirty || kilometersTraveled.touched)"
        >
     
-      <div *ngIf="kilometerstraveled.errors?.['required']" class="alert alert-primary" role="alert">
+      <div *ngIf="kilometersTraveled.errors?.['required']" class="alert alert-primary" role="alert">
         Unos broja prijeđenih kilometara je <strong>obavezan</strong>.
       </div>
-      <div *ngIf="kilometerstraveled.errors?.['pattern']" class="alert alert-primary" role="alert">
+      <div *ngIf="kilometersTraveled.errors?.['pattern']" class="alert alert-primary" role="alert">
         Možete unijeti samo <strong>brojeve</strong>.
       </div>
       </div> 
     </div> 
       <div class="form-group mt-3">
-        <label for="vehicle_typeid">Vrsta vozila</label>
-        <input type="text" class="form-control" name="vehicle_typeid"  [(ngModel)]="addVehicleRequest.vehicle_typeid" *ngIf="addVehicleRequest.vehicle_typeid!=''" >
-        <select class="form-control" name="vehicle_typeid" id="vehicle_typeid" [(ngModel)]="addVehicleRequest.vehicle_typeid" *ngIf="addVehicleRequest.vehicle_typeid==''">
-          <option *ngFor="let type of Vehicle_TypeId$|async" [value]="type.id">{{type.vehicle_typename}}</option>
+        <label for="vehicle_typeFK">Vrsta vozila</label>
+        <input type="text" class="form-control" name="vehicle_typeFK"  [(ngModel)]="addVehicleRequest.vehicle_typeFK" *ngIf="addVehicleRequest.vehicle_typeFK!=''" >
+        <select class="form-control" name="vehicle_typeFK" id="vehicle_typeFK" [(ngModel)]="addVehicleRequest.vehicle_typeFK" *ngIf="addVehicleRequest.vehicle_typeFK==''">
+          <option *ngFor="let type of Vehicle_TypeId$|async" [value]="type.vehicle_typeId">{{type.vehicle_typeName}}</option>
         </select>
         
       </div>
 
       
        <div class="form-group mt-3">
-        <label for="clientid">Klijent</label>
-        <input type="text" class="form-control" name="clientid"  [(ngModel)]="addVehicleRequest.clientid" *ngIf="addVehicleRequest.clientid!=''" >
-        <select class="form-control" name="clientid" id="clientid" [(ngModel)]="addVehicleRequest.clientid" *ngIf="addVehicleRequest.clientid==''">
-          <option *ngFor="let type of ClientId$|async" [value]="type.id">{{type.firstlastname}}</option>
+        <label for="clientFK">Klijent</label>
+        <input type="text" class="form-control" name="clientFK"  [(ngModel)]="addVehicleRequest.clientFK" *ngIf="addVehicleRequest.clientFK!=''" >
+        <select class="form-control" name="clientFK" id="clientFK" [(ngModel)]="addVehicleRequest.clientFK" *ngIf="addVehicleRequest.clientFK==''">
+          <option *ngFor="let type of ClientId$|async" [value]="type.clientId">{{type.firstLastName}}</option>
         </select>
         
       </div>
